@@ -1,7 +1,7 @@
 docker build -t mutistage:latest --target=dev
 
 For development:
-sh```
+```sh
 docker buildx build -t nest-tdd:latest -f Dockerfile.dev .
 ```
 
