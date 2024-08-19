@@ -1,0 +1,34 @@
+services:
+    nest-tdd-backend:
+        container_name: nest-tdd-backend
+        build:
+          context: .
+          dockerfile: ./Dockerfile.dev
+        ports:
+          - "8080:3000"
+        volumes:
+          - .:/app
+        env_file:
+          - ./.env
+        depends_on:
+          - nest-tdd-database
+        networks:
+          - nest-tdd-network
+    nest-tdd-database:
+        container_name: nest-tdd-database
+        image: mysql:8.0.32
+        ports:
+          - "4407:3306"
+        environment:
+          MYSQL_ROOT_PASSWORD: "root"
+        networks:
+          - nest-tdd-network
+        volumes:
+          - nest-tdd-data:/var/lib/mysql
+
+networks:
+    nest-tdd-network:
+        name: nest_tdd_network
+
+volumes:
+  nest-tdd-data:
