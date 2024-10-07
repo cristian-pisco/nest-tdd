@@ -2,7 +2,13 @@ docker build -t mutistage:latest --target=dev
 
 For development:
 ```sh
-docker buildx build -t nest-tdd:latest -f Dockerfile.dev .
+docker build -t nest-tdd:latest --target=dev .
+```
+
+```sh
+npx prisma
+npx prisma init
+npx prisma migrate dev --name initial
 ```
 
 ## Reference
