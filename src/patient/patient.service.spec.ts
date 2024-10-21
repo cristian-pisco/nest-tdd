@@ -53,12 +53,22 @@ describe('PatientService', () => {
 
   it('should update a patient', async () => {
     const patient = await PatientFactory.create();
-    const updateName = 'Jane Doe';
+    const updateName = 'Jane Sommerfield';
     const updatedPatient = await service.updatePatient({
       id: patient.id,
       name: updateName,
     });
     expect(updatedPatient).toBeDefined();
     expect(updatedPatient.name).toBe(updateName);
+  })
+  it('should delete a patient', async () => {
+    const patient = await PatientFactory.create();
+    await service.deletePatient({
+      id: patient.id,
+    });
+    const patientShouldBeDeleted = await prisma.patient.findUnique({
+      where: { id: patient.id },
+    });
+    expect(patientShouldBeDeleted).toBeNull();
   })
 });

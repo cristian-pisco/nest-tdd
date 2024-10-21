@@ -1,11 +1,11 @@
 import { IBaseRepository } from "@core/interfaces";
 import { PrismaService } from "@dbservice/prisma.service";
 import { Injectable } from "@nestjs/common";
-import { CreatePatientDto, UpdatePatientDto } from "@patient/dtos";
+import { CreatePatientDto, DeletePatientDto, UpdatePatientDto } from "@patient/dtos";
 import { Patient } from "@prisma/client";
 
 @Injectable()
-export class PatientRepository implements IBaseRepository<Patient, number, CreatePatientDto, UpdatePatientDto> {
+export class PatientRepository implements IBaseRepository<Patient, number, CreatePatientDto, UpdatePatientDto, DeletePatientDto> {
     constructor(private readonly prisma: PrismaService) {}
     getById(id: number): Promise<Patient> {
         return this.prisma.patient.findUnique({
@@ -25,6 +25,13 @@ export class PatientRepository implements IBaseRepository<Patient, number, Creat
                 id: item.id,
             },
             data: item,
+        });
+    }
+    delete(item: DeletePatientDto): Promise<Patient> {
+        return this.prisma.patient.delete({
+            where: {
+                id: item.id,
+            }
         });
     }
 }
