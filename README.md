@@ -16,3 +16,4 @@ npx prisma migrate dev --name initial
 - https://www.divio.com/blog/guide-using-multiple-dockerfiles/
 - https://medium.com/@mehdi_hosseini/how-to-link-multiple-docker-compose-files-7250f10063a9
 - https://ualmtorres.github.io/SeminarioTesting/#trueel-archivo-de-tests-app-controller-spec-ts
+- https://mswjs.io/
