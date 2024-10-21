@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { PatientService } from './patient.service';
 import { PrismaService } from '@dbservice/prisma.service';
 import { PatientRepository } from './repositories/mysql/patient.repository';
+import { PatientFactory } from '@database/factories/patient.factory';
 
 describe('PatientService', () => {
   let service: PatientService;
@@ -41,5 +42,23 @@ describe('PatientService', () => {
 
     expect(foundPatient).toBeDefined();
     expect(foundPatient.name).toBe(createdPatient.name); 
+  })
+
+  it('should get a patient by id', async () => {
+    const patient = await PatientFactory.create();
+    const foundPatient = await service.getPatient(patient.id);
+    expect(foundPatient).toBeDefined();
+    expect(foundPatient.id).toBe(patient.id);
+  })
+
+  it('should update a patient', async () => {
+    const patient = await PatientFactory.create();
+    const updateName = 'Jane Doe';
+    const updatedPatient = await service.updatePatient({
+      id: patient.id,
+      name: updateName,
+    });
+    expect(updatedPatient).toBeDefined();
+    expect(updatedPatient.name).toBe(updateName);
   })
 });

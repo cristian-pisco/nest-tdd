@@ -17,10 +17,12 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
+    "esModuleInterop": true,
     "paths": {
       "@core/*": ["src/core/*"],
       "@patient/*": ["src/patient/*"],
       "@dbservice/*": ["prisma/*"],
+      "@database/*": ["database/*"]
     }
   }
 }
