@@ -21,8 +21,10 @@
     "paths": {
       "@core/*": ["src/core/*"],
       "@patient/*": ["src/patient/*"],
+      "@appointment/*": ["src/appointment/*"],
       "@dbservice/*": ["prisma/*"],
-      "@database/*": ["database/*"]
+      "@database/*": ["database/*"],
+      "@/*": ["src/*"]
     }
   }
 }

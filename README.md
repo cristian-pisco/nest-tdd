@@ -5,6 +5,11 @@ For development:
 docker build -t nest-tdd:latest --target=dev .
 ```
 
+Access to container typing this:
+```sh
+docker exec -it nest-tdd-backend sh
+```
+
 ```sh
 npx prisma
 npx prisma init

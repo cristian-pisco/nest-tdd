@@ -6,6 +6,7 @@ import { PatientRepository } from './repositories/mysql/patient.repository';
 import { HttpModule } from '@nestjs/axios';
 
 @Module({
+  imports: [HttpModule],
   controllers: [PatientController],
   providers: [PatientService, PrismaService, PatientRepository, HttpModule],
   exports: [PatientService],

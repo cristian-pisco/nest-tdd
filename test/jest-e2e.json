@@ -5,5 +5,18 @@
   "testRegex": ".e2e-spec.ts$",
   "transform": {
     "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "coveragePathIgnorePatterns": [
+      ".module.ts"
+  ],
+  "modulePathIgnorePatterns": [
+      "/node_modules/"
+  ],
+  "moduleNameMapper": {
+    "^@/(.*)$": "<rootDir>/../src/$1",
+    "^@patient/(.*)$": ["<rootDir>/../src/patient/$1"],
+    "^@appointment/(.*)$": ["<rootDir>/../src/appointment/$1"],
+    "^@dbservice/(.*)$": ["<rootDir>/../prisma/$1"],
+    "^@database/(.*)$": ["<rootDir>/../database/$1"]
   }
 }
