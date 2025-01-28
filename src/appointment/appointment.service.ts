@@ -1,11 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateAppointmentDto } from './dtos/create.dto';
 import { AppointmentRepository } from './repositories/mysql/appointment.repository';
 import { Appointment } from '@prisma/client';
+import { RedisMemory } from '@jeloulatam/memory';
 
 @Injectable()
 export class AppointmentService {
-  constructor(private appointmentRepository: AppointmentRepository) {}
+  constructor(private appointmentRepository: AppointmentRepository, @Inject("MEMORY") private readonly memory: RedisMemory) {}
 
   public validateScheduleAppointment(appointmentData: CreateAppointmentDto) {
     const startTime = new Date(appointmentData.startTime);

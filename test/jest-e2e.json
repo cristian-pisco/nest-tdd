@@ -14,6 +14,7 @@
   ],
   "moduleNameMapper": {
     "^@/(.*)$": "<rootDir>/../src/$1",
+    "^@core/(.*)$": ["<rootDir>/../src/core/$1"],
     "^@patient/(.*)$": ["<rootDir>/../src/patient/$1"],
     "^@appointment/(.*)$": ["<rootDir>/../src/appointment/$1"],
     "^@dbservice/(.*)$": ["<rootDir>/../prisma/$1"],

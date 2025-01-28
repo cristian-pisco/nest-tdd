@@ -23,6 +23,8 @@ import { RouterModule } from '@nestjs/core';
     ])
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+  ],
 })
 export class AppModule {}
