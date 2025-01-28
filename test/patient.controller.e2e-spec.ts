@@ -4,16 +4,23 @@ import request from 'supertest';
 import { CreatePatientDto } from '@patient/dtos';
 import { PrismaService } from '@dbservice/prisma.service';
 import { AppModule } from '@/app.module';
+import { createMock, DeepMocked } from '@golevelup/ts-jest';
+import { RedisMemory } from '@jeloulatam/memory';
 
 describe('PatientController (e2e)', () => {
   let app: INestApplication;
+  let redisMemoryMock: DeepMocked<RedisMemory>;
 
   beforeEach(async () => {
+    redisMemoryMock = createMock<RedisMemory>();
     const prisma = new PrismaService();
     prisma.$queryRaw`delete from appointments;`;
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
-    }).compile();
+    })
+      .overrideProvider("MEMORY")
+      .useValue(redisMemoryMock)
+      .compile();
 
     app = moduleFixture.createNestApplication();
     app.setGlobalPrefix('api');
