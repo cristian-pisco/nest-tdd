@@ -1,0 +1,4 @@
+unsafe-perm=true
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+@jeloulatam:registry=https://npm.pkg.github.com/
+@01labec:registry=https://npm.pkg.github.com/
